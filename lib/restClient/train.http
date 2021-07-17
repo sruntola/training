@@ -1,0 +1,18 @@
+@baseUrl = https://cicstaging.z1central.com/api/
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIyIiwianRpIjoiOTFjMWEwY2ExMzBkMjJiZmE5ZDk2NWJjZjQxOTc1YTNlMGMyNjllZTJjOTdiN2RiMDQ3NzYwMmY4ZDMzNmViOGE1ZDZlZGRkM2Q1ZTg5NTYiLCJpYXQiOiIxNjI2NTM3MTg3LjIzNzc1NyIsIm5iZiI6IjE2MjY1MzcxODcuMjM3NzYwIiwiZXhwIjoiMTY1ODA3MzE4Ny4yMzEwNDciLCJzdWIiOiIxNTQzIiwic2NvcGVzIjpbIioiXX0.ibqlw1hUT9nk7iyyTsiJPfZUWMclljgvPzRhkbx0rmPltbOm3WnXWmmzqldFwWLcJxsfhHDFPYOa0V5FIZMh3dgN8ZAL4Ym_O7jZsxQne06ImKP9_d73jsbvhtpPVU4Gj5AZMkFEyR-fJMhkHMoAlNROYVJwaUkCSP6XmTJDK9Bt9FS3N1Uq55QS3nG4k2bjW4qmtjbStopBzx-c6QyjrZi92oFQp-p-m5W32zgZ8FqkPctYg_f417Yr59diJphs312JjnFqRNPijed1wVKoRi3poAkdhDxInqSqbehG6kHjbd_a_zk_cQQa3n-FGE4DDQ_7W9Q-CjkJRymuTyPwRbsJf-mXGETb7tFKqVm5koW5CETmtNcoLxu4i6fFQycijeDItA9lP33RuUCG6JRuph2KQmL2cuy-rdUiSBtSH9jU-ff1XApjHBIx8_gcpAB9GiGupkPkatRMXYpXrQUHWkViu7bDRyf5XLMVXL1vnes4SNZ1c2uq9gjdX-RMEKJZX2S_TnEsYA8IQ__hpy8u9UFX46QdZZbNHxX7UBG2oWdScIn2kwQruhdJFWkb5sderd_I2dg0z-Mw7rSUSyDMKxo2E9t4HgSiZ-zMjRjQIutkX1-FQOeEmnTRCXk5cgdl0NRscdAE50SctQqBf0wZS-eVctxImaTnXYmm0-SHqHI
+
+POST {{baseUrl}}login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "phone" : "+855975431111",
+    "password" : "1234"
+}
+
+###
+GET {{baseUrl}}user
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
