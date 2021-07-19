@@ -11,10 +11,14 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  bool isLoading = true;
   onNavigator() {
     Future.delayed(
       Duration(seconds: 5),
       () {
+        setState(() {
+          isLoading = false;
+        });
         LocalDataStorage.getToken()!.then(
           (token) {
             if (token != '') {
@@ -69,7 +73,7 @@ class _SplashScreenState extends State<SplashScreen> {
               Text('Loading...'),
               SizedBox(
                 height: 50,
-              )
+              ),
             ],
           ),
         ),

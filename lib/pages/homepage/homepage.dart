@@ -2,8 +2,10 @@ import 'package:covid_19_ui/controllers/userController.dart';
 import 'package:covid_19_ui/helpers/appColor.dart';
 import 'package:covid_19_ui/helpers/localDataStorage.dart';
 import 'package:covid_19_ui/helpers/menuList.dart';
+import 'package:covid_19_ui/pages/customer/customers.dart';
 import 'package:covid_19_ui/pages/user/loginScreen.dart';
 import 'package:covid_19_ui/widgets/advertiseSection.dart';
+import 'package:covid_19_ui/widgets/allcustomer.dart';
 import 'package:covid_19_ui/widgets/customButton.dart';
 import 'package:covid_19_ui/widgets/preventionSection.dart';
 import 'package:flutter/material.dart';
@@ -186,13 +188,24 @@ class _HomePageState extends State<HomePage> {
                   SizedBox(
                     height: 20,
                   ),
-                  Obx(
-                    () => CircleAvatar(
-                      radius: 50,
-                      backgroundImage:
-                          NetworkImage(userCon.user.value.profile!),
-                    ),
-                  ),
+                  // Obx(
+                  //   () => CircleAvatar(
+                  //     radius: 50,
+                  //     backgroundImage:
+                  //         NetworkImage(userCon.user.value.profile!),
+                  //   ),
+                  // ),
+
+                  AllCustomers(
+                      label: "All Customer",
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CustomerScreen(),
+                          ),
+                        );
+                      }),
                 ],
               ),
             ),

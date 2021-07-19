@@ -11,8 +11,15 @@ Content-Type: application/json
 }
 
 ###
-GET {{baseUrl}}user
+GET {{baseUrl}}v2/customer
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
+{
+    "local" : "kh"
+}
+
+
+###
 
