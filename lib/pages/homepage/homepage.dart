@@ -2,11 +2,13 @@ import 'package:covid_19_ui/controllers/userController.dart';
 import 'package:covid_19_ui/helpers/appColor.dart';
 import 'package:covid_19_ui/helpers/localDataStorage.dart';
 import 'package:covid_19_ui/helpers/menuList.dart';
+import 'package:covid_19_ui/models/pixel.dart';
 import 'package:covid_19_ui/pages/customer/customers.dart';
 import 'package:covid_19_ui/pages/user/loginScreen.dart';
 import 'package:covid_19_ui/widgets/advertiseSection.dart';
 import 'package:covid_19_ui/widgets/allcustomer.dart';
 import 'package:covid_19_ui/widgets/customButton.dart';
+import 'package:covid_19_ui/widgets/customOptionSelect.dart';
 import 'package:covid_19_ui/widgets/preventionSection.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,6 +22,24 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final userCon = Get.put(UserController());
+
+  List<String> options = [
+    "1080",
+    "720",
+    "480",
+    "360",
+    "240",
+    "144",
+  ];
+
+  List<OptionPixel>? optionPixel = [
+    OptionPixel(label: '1080', isSelect: false),
+    OptionPixel(label: '720', isSelect: true),
+    OptionPixel(label: '480', isSelect: false),
+    OptionPixel(label: '360', isSelect: false),
+    OptionPixel(label: '240', isSelect: false),
+    OptionPixel(label: '144', isSelect: false),
+  ];
 
   @override
   void initState() {
@@ -197,15 +217,42 @@ class _HomePageState extends State<HomePage> {
                   // ),
 
                   AllCustomers(
-                      label: "All Customer",
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => CustomerScreen(),
-                          ),
-                        );
-                      }),
+                    label: "All Customer",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => CustomerScreen(),
+                        ),
+                      );
+                      // Get.bottomSheet(
+                      //   Container(
+                      //     height: MediaQuery.of(context).size.height * 0.5,
+                      //     width: double.infinity,
+                      //     color: Colors.white,
+                      //     child: Column(
+                      //       // children: optionPixel!.map((e) {
+                      //       //   return CustomOptionSelect(
+                      //       //     pixel: e,
+                      //       //   );
+                      //       // }).toList(),
+                      //       children: optionPixel!.asMap().entries.map((e) {
+                      //         return CustomOptionSelect(
+                      //           pixel: e.value,
+                      //           currentIndex: 1,
+                      //           selectedIndex: 1,
+                      //         );
+                      //       }).toList(),
+                      //     ),
+                      //   ),
+                      //   shape: RoundedRectangleBorder(
+                      //     borderRadius: BorderRadius.only(
+                      //       topLeft: Radius.circular(10),
+                      //     ),
+                      //   ),
+                      // );
+                    },
+                  ),
                 ],
               ),
             ),

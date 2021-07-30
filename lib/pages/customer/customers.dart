@@ -13,6 +13,16 @@ class CustomerScreen extends StatefulWidget {
 
 class _CustomerScreenState extends State<CustomerScreen> {
   final cusCon = Get.put(CustomerController());
+  int page = 1;
+
+  fetchMoreData() {
+    page++;
+    if (page >= 1 && page <= 10) {
+      // fetch more data
+    } else {
+      // stop fetch more data
+    }
+  }
 
   @override
   void initState() {
@@ -35,15 +45,24 @@ class _CustomerScreenState extends State<CustomerScreen> {
                 child: CircularProgressIndicator(),
               )
             : cusCon.customersModel.value.data!.length != 0
-                ? ListView.builder(
-                    itemBuilder: (context, index) {
-                      CustomerModel item =
-                          cusCon.customersModel.value.data![index];
-                      return CustomerCard(
-                        customerModel: item,
-                      );
+                ? NotificationListener<ScrollNotification>(
+                    child: ListView.builder(
+                      itemBuilder: (context, index) {
+                        CustomerModel item =
+                            cusCon.customersModel.value.data![index];
+                        return CustomerCard(
+                          customerModel: item,
+                        );
+                      },
+                      itemCount: cusCon.customersModel.value.data!.length,
+                    ),
+                    onNotification: (scrollPixel) {
+                      if (scrollPixel.metrics.pixels ==
+                          scrollPixel.metrics.maxScrollExtent) {
+                        fetchMoreData();
+                      }
+                      return false;
                     },
-                    itemCount: cusCon.customersModel.value.data!.length,
                   )
                 : Text('No Data'),
       ),

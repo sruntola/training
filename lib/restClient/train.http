@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ###
-GET {{baseUrl}}v2/customer
+GET {{baseUrl}}v2/customer?name=a&page=1
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
